@@ -66,15 +66,15 @@ def all_supplies_in_holidays(holiday_hash)
   holiday_hash.each do |season,days|
     puts "#{season.capitalize}:"
     days.each do |day,supplies|
-      day_string=titleize(day.to_s.sub!("_"," "))
+      day_string=clean(day.to_s)
       puts "  #{day_string}: #{supplies.join(', ')}"
     end
   end
 
 end
 
-def titleize(string)
-  string_array=string.split(" ")
+def clean(string)
+  string_array=string.split("_")
   string_array.each do |word|
     word.capitalize!
   end
