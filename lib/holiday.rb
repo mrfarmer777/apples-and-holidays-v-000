@@ -74,6 +74,7 @@ def all_supplies_in_holidays(holiday_hash)
 end
 
 def clean(string)
+  #separate method for cleaning the stringified holiday symbol for display
   string_array=string.split("_")
   string_array.each do |word|
     word.capitalize!
@@ -86,5 +87,14 @@ end
 def all_holidays_with_bbq(holiday_hash)
   # return an array of holiday names (as symbols) where supply lists
   # include the string "BBQ"
-
+  bbq_days=[]
+  holiday_hash.each do |season,days|
+    season.each do |day,supplies|
+      if supplies.include?('BBQ')
+        bbq_days<<day
+      end
+    end
+  end
+  bbq_days
+      
 end
